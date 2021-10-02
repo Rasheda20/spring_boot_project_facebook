@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link  th:href="@{/css/chatStartStyle.css}" rel="stylesheet">
+	<script  th:src="@{/js/chatStartStyle.js}"></script>
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+	<!-- <script src="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"></script> -->
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+	 <link  th:href="@{/css/chartStartCss.css}" rel="stylesheet">
+	 
+	
+</head>
+<body>
+
+
+
+
+<div class="float-child-1">
+			<div id="name-form">
+	<h1 th:text=${user.userName} ></h1>
+	<br />
+	
+	<input type="hidden" th:value=${user.userName} th:name="postId" id="name-value"/>
+	<!-- <input type="text" placeholder="Enter name" id="name-value"/> -->
+	<button id="login" class="red">Start chat</button>
+	<br />
+	<button class="red" id="logout" ><a th:href="@{/user/index}">back</a></button>
+	
+	</div>
+
+</div>
+<div class="float-child-2">
+			<div id="chat-room" class="d-none">
+			
+			
+			
+			
+			
+			
+			<div>
+			
+			<div><input type="text" placeholder="Write a message" id="message-value" onfocus="this.value=''" autofocus/>
+			
+			
+			</div>
+			<br />
+			<div><button class="btn" id="send-btn">send</button></div>
+			
+			
+			
+			
+			
+			</div>
+			<br /><br /><br />
+			<div class="table-responsive">
+						<table id="message-container-table">
+							
+						
+						
+						</table>
+					
+					
+					</div>
+			
+			
+			
+			
+	<!-- <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<div class="card mt-3">
+					
+					<div class="card-header">
+					<h3 id="name-title"></h3>
+					
+					</div>
+			
+				<div class="card-body">
+					
+					
+					<div id="name-form" class="bg-primary">
+	
+	<input type="text" placeholder="Enter name" id="message-value" autofocus/>
+	<button class="btn" id="send-btn">send</button>
+	
+	
+	</div>
+					
+					
+					<div class="table-responsive">
+						<table id="message-container-table">
+							
+						
+						
+						</table>
+					
+					
+					</div>
+				
+				</div>
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	
+	</div> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+</body>
+<script>
+var stompClient=null
+
+function sendMessage(){
+	
+	let jsonOb={
+		name:localStorage.getItem("name"),
+		content:$("#message-value").val()
+			
+	}
+	
+	stompClient.send("/app/message", {}, JSON.stringify(jsonOb))
+	
+}
+
+
+function connect(){
+	let socket = new SockJS("/server1")
+	stompClient=Stomp.over(socket)
+	stompClient.connect({}, function(frame){
+		
+		console.log("connected : "+ frame)
+		$("#name-form").addClass('d-none')
+		$("#chat-room").removeClass("d-none")
+		
+		//subscribe
+		stompClient.subscribe("/topic/return-to", function(response){
+			showMessage(JSON.parse(response.body))
+			
+		})
+		
+		
+		
+	})
+	
+}
+
+function showMessage(message){
+	
+	$("#message-container-table").prepend(`<tr><td><b>${message.name} : ${message.content}</b> </td></tr>`)
+	
+}
+
+
+$(document).ready((e)=>{
+	
+	
+	$("#login").click(()=>{
+		let name=$("#name-value").val()
+		localStorage.setItem("name", name)
+		
+		
+		$("#name-title").text(name)
+		connect();
+		
+		
+	})
+	
+	$("#send-btn").click(()=>{
+		
+		sendMessage()
+	})
+	
+	
+})
+</script>
+</html>

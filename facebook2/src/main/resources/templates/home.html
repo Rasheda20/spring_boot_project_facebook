@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>facebook</title>
+    
+    <link  th:href="@{/css/homeStyle.css}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+     <script src="https://kit.fontawesome.com/c87f2cc4ae.js" crossorigin="anonymous"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <img th:src= "@{/images/homeImg/flogo.png}" class="logo">
+            <ul>
+                <li><img th:src= "@{/images/homeImg/notification.png}"></li>
+                <li><img th:src= "@{/images/homeImg/inbox.png}"></li>
+                <li><img th:src= "@{/images/homeImg/video.png}"></li>
+            </ul>
+
+        </div>
+        <div class="nav-right">
+            <!-- <div class="search-box">
+                <img th:src= "@{/images/homeImg/search.png}" alt="">
+                <input type="text" placeholder="search">
+            </div> -->
+            <br />
+            <br />
+            <br />
+            <h2 th:text=${user.userName} style="color:white"></h2>
+            <div class="nav-user-icon online" onclick="settingsMenuToggle()">
+                <img  th:src="@{'/images/'+${user.userImageUrl}}" alt="" class="ico">
+            </div>
+
+        </div>
+
+
+
+        <div class="settings_menu">
+
+            <div id="dark-btn" >
+                <span></span>
+              </div>
+
+            <div class="settings-menu-inner">
+              <div class="user-profile">
+                <img  th:src="@{'/images/'+${user.userImageUrl}}" alt="" class="ico">
+                <div>
+                <h2 th:text=${user.userName}></h2>
+                 <!--  <h2><span th:text=${user.userName}></span></h2> -->
+                  <!-- <a href="http://localhost:8080/user/profile">See Your profile</a> -->
+                  <a th:href="@{/user/show-post}"><h3>See Your profile</h3></a>
+                  
+                </div>
+              </div>
+              <hr>
+              <div class="user-profile">
+                <img th:src="@{/images/homeImg/feedback.png}" alt="">
+                <div>
+                  <p>Give Feedback</p>
+                  <a href="#">Help us to improve the new design</a>
+                </div>
+              </div>
+              <hr>
+              <div class="setting-links">
+                <img th:src= "@{/images/homeImg/setting.png}" class="settings-icon">
+                <a href="#">Settings & Privacy <img th:src="@{/images/homeImg/arrow.png}" width="10px"></a>
+              </div>
+      
+              <div class="setting-links">
+                <img th:src= "@{/images/homeImg/help.png}" class="settings-icon">
+                <a href="#">Help & Support <img th:src="@{/images/homeImg/arrow.png}" width="10px"></a>
+              </div>
+      
+              <div class="setting-links">
+                <img th:src= "@{/images/homeImg/display.png}" class="settings-icon">
+                <a href="#">Display & Accessibility<img th:src="@{/images/homeImg/arrow.png}" width="10px"></a>
+              </div>
+      
+              <div class="setting-links">
+                <img th:src= "@{/images/homeImg/logout.png}" class="settings-icon">
+                <a th:href="@{/logout}">Logout<img th:src="@{/images/homeImg/arrow.png}" width="10px"></a>
+              </div>
+            </div>
+      
+          </div>
+
+
+
+    </nav>
+
+    <!-- header end -->
+    <div class="container">
+
+        <!-- left_sidebar -->
+        <div class="left_sidebar">
+            <div class="left_sidebar">
+                <div class="imp-links">
+                    <a href="#"><img th:src="@{/images/homeImg/news.png}">Latest News</a>
+                    <a th:href="@{/user/chat1}"><img th:src= "@{/images/homeImg/friends.png}">Chat</a>
+                    <a th:href="@{/user/chatStart}"><img th:src= "@{/images/homeImg/group.png}">Chat Room</a>
+                    <a href="#"><img th:src="@{/images/homeImg/marketplace.png}">Marketplace</a>
+                    <a href="#"><img th:src="@{/images/homeImg/watch.png}">Watch</a>
+                    <a href="#">See More</a>
+                </div>
+
+                <div class="shortcut-links">
+                    <p>Your Shortcuts</p>
+                    <a href="#"><img th:src="@{/images/homeImg/shortcut-1.png}">Web Developers</a>
+                    <a href="#"><img th:src= "@{/images/homeImg/shortcut-2.png}">Web design course</a>
+                    <a href="#"><img th:src= "@{/images/homeImg/shortcut-3.png}">Full Stack Development</a>
+                    <a href="#"><img th:src="@{/images/homeImg/shortcut-4.png}">Website Experts</a>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <!-- main_content -->
+        <div class="main_content">
+
+            <!-- <div class="story-gallery">
+
+                <div class="story story1" th:style="'background-image:url(../images/homeImg/status-1.png);'">
+                    <img th:src="@{/images/homeImg/upload.png}" alt="">
+                    <p>Post Story</p>
+                </div>
+                
+                </div>
+
+                <div class="story story2" th:style="'background-image:url(../images/homeImg/status-2.png);'">
+                    <img th:src= "@{/images/homeImg/member-1.png}" alt="">
+                    <p>Post Story</p>
+                </div>
+
+                <div class="story story3" th:style="'background-image:url(../images/homeImg/status-3.png);'">
+                    <img th:src= "@{/images/homeImg/member-2.png}" alt="">
+                    <p>alison</p>
+                </div>
+
+                <div class="story story4" th:style="'background-image:url(../images/homeImg/status-4.png);'">
+                    <img th:src= "@{/images/homeImg/member-3.png}" alt="">
+                    <p>alison</p>
+                </div>
+
+                <div class="story story5" th:style="'background-image:url(../images/homeImg/status-5.png);'">
+                    <img th:src="@{/images/homeImg/member-4.png}" alt="">
+                    <p>alison</p>
+                </div>
+            </div> -->
+            
+            
+            
+            
+            
+     <!--  -------------What is on your mind---------------------  -->     
+            
+            <div class="write-post-container">
+              <div class="user-profile">
+                <img  th:src="@{'/images/'+${user.userImageUrl}}" alt="" class="ico">
+               
+                <div>
+                <h2 th:text=${user.userName}></h2>
+                 
+                 <!--  <small>public<i class="fas fa-caret-down"></i></small> -->
+                </div>
+              </div>
+              <div class="post-input-container">
+                <textarea rows="3" placeholder="What's on your mind?"></textarea>
+                <div class="add-post-links">
+                 <!--  <a href="#"><img th:src="@{/images/homeImg/live-video.png}" alt="">Live video</a> -->
+                  <a th:href="@{/user/profile/post}"><img th:src="@{/images/homeImg/photo.png}" alt="">Photo</a>
+                  <a th:href="@{/user/profile/post}"><img th:src="@{/images/homeImg/feeling.png}" alt="">Post</a>
+      
+                </div>
+              </div>
+            </div>
+            
+            
+            
+            
+            
+            
+    <!--  -------------POST---------------------  -->        
+            
+             
+            <div class="post-container" th:each = "c :${post}" id="p">
+            
+                <div class="post-row">
+                    <div class="user-profile">
+                    <img  th:src="@{'/images/'+${c.userImageUrl}}" alt="">
+                        <div>
+                          <h3 th:text=${c.userName}></h3>
+                        <!--   <span>June 24 2011, 13:20 pm</span> -->
+                          
+                        </div>
+                        
+                      </div>
+                      <a href="#" ><i class="fas fa-ellipsis-v"></i></a>
+
+                </div>
+
+              
+              <p class="post-text" th:text=${c.postDescreption}><a href="#" Easy>ffgj</a></p>
+              <img th:src="@{'/images/'+${c.postImgUrl}}" class="post-img"> 
+              
+              <br /><br />
+              <div class="post-row">
+                <div class="activity-icon">
+                
+                  
+                  
+                  
+                  
+                  
+                  <!-- <div  th:each = "l :${like1}" >
+                  	<h2 th:text=${l.likeUserName}></h2>
+                  </div> -->
+                  
+                  
+                  <div><img th:src="@{/images/homeImg/like-blue.png}" alt="">
+                  
+                  <div th:with="count=${0}">
+             <div  th:each = "t :${lc}" >
+          
+             <div th:if = "${t.id==c.postId}">
+              	<h3 th:text="${t.count}" style="color : green"></h3> 
+              	
+              </div>
+            </div>  
+             	
+            </div> 
+                  
+                  </div>
+                  <!-- <div><img th:src="@{/images/homeImg/comments.png}" alt="">200</div>
+                  <div><img th:src="@{/images/homeImg/share.png}" alt="">30</div> -->
+                </div>
+              </div>
+              <br />
+              <div>
+                  <form th:object=${like} method="POST" th:action="@{/user/index/post/processLike}">
+                  <input type="hidden" th:value=${c.postId} th:name="postId"/>
+                  <button type="submit">Like this post</button>
+                   </form>
+                  </div>
+                  
+                  
+                  
+              
+            <!--------------- print comment -------------------->
+            
+            
+            
+            
+            <div  th:each = "t :${comment1}" >
+             <div th:if = "${t.postId==c.postId}">
+             
+             	<div class="formC">
+             	<h3 th:text=${t.commentDescription}></h3>
+             		
+             		<div>
+             	<p class="inp" th:text=${t.commentUser}></p>	
+             		</div>
+             		
+             	</div>
+              </div>
+            </div>
+             
+            
+        
+              
+              
+              <!-- <div> <p>
+  		<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    		See all comment
+  		</a>
+  		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+   			 See less
+  		</button>
+		</p>
+		<div class="collapse" id="collapseExample">
+  		<div class="card card-body">
+    		<div  th:each = "t :${comment1}" >
+             <div th:if = "${t.postId==c.postId}">
+             
+             	<div >
+             		<p class="inp" th:text=${t.commentUser}></p>
+             		
+             		<p class="formC" th:text=${t.commentDescription}></p>
+             	</div>
+              	
+              	
+              </div>
+            </div>
+  		</div>
+		</div>
+			</div> -->
+              
+              
+              
+              
+              
+              
+              
+             
+            <form  th:object=${comment} method="POST"  th:action="@{/user/index/post/processComment}">
+            
+              <div class="cflex formC">
+              <!-- <img th:src="@{'/images/'+${user.userImageUrl}}" alt="" class="ico"/>  -->	
+              	<input type="text" name="commentDescription" placeholder="Enter your comment" class="inp"/>
+              	
+              	
+              	<!-- <h3 th:text=${c.postId} th:name="postId"></h3> -->
+              	<input type="hidden" th:value=${c.postId} th:name="postId"/>
+             
+             
+             <button type="submit">
+            <!--  <i class="fa fa-paper-plane" aria-hidden="true"></i> -->
+            <span><img th:src="@{/images/homeImg/sendCom.jpeg}" alt="" class="ico"/></span> 
+             </button>
+             </div>
+             
+             
+			</form>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+           <!--  <button type="button" class="Load-more-btn">Load More</button> -->
+
+        </div>
+
+        <!-- right_sidebar -->
+        <div class="right_sidebar">
+            <div class="sidebar-title">
+                <h4>Events</h4>
+                <a href="#">See All</a>
+            </div>
+
+            <div class="event">
+                <div class="left-event">
+                    <h3>18</h3>
+                    <span>March</span>
+                </div>
+                <div class="right-event">
+                    <h4>Social Media</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>Willson Tech Park</p>
+                    <a href="#">More Info</a>
+                </div>
+            </div>
+
+            <br>
+            <div class="event">
+                <div class="left-event">
+                    <h3>22</h3>
+                    <span>June</span>
+                </div>
+                <div class="right-event">
+                    <h4>Mobile Marketting</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>Willson Tech Park</p>
+                    <a href="#">More Info</a>
+                </div>
+            </div>
+
+
+<br>
+            <div class="sidebar-title">
+                <h4>Advertisement</h4>
+                <a href="#">See All</a>
+            </div>
+
+            <img th:src= "@{/images/homeImg/advertisement.png}" alt="" class="sidebar-ads">
+
+            <!-- <div class="sidebar-title">
+                <h4>Conversation</h4>
+                <a href="#">Hide Chat</a>
+            </div> -->
+
+
+            <!-- <div class="online-list">
+                <div class="online">
+                    <img th:src="@{/images/homeImg/member-1.png}">
+                </div>
+                <p>Alison</p>
+            </div>
+
+            <div class="online-list">
+                <div class="online">
+                    <img th:src="@{/images/homeImg/member-2.png}" >
+                </div>
+                <p>Alison</p>
+            </div>
+
+            <div class="online-list">
+                <div class="online">
+                    <img th:src= "@{/images/homeImg/member-3.png}" >
+                </div>
+                <p>Alison</p>
+            </div> -->
+        </div>
+
+    </div>
+
+
+
+
+<script  th:src="@{/js/homeJs.js}"></script>
+
+</body>
+
+</html>

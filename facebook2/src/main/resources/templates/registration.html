@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Registration Page</title>
+	<style>
+#head{
+  height:82px;
+  background-color:#1877f2;
+  border:1px solid;
+
+}
+*{padding: 0px;
+margin: 0px;}
+.logo{
+  color: white;
+  position: absolute;
+  top:25px;
+  left:50px;
+  width: 100px;
+}
+.form1{
+  position:absolute;
+  top:10px;
+  height: 60px;
+  width: 180px;
+  left:700px;
+  color: white;
+
+}
+.form2{
+  position:absolute;
+  top:10px;
+  left:900px;
+  color: white;
+}
+.submit{
+  position:absolute;
+  top:29px;
+  left:1090px;
+  background-color: blue;
+  cursor: pointer;
+  color: white;
+  width: 50px;
+  z-index: 20;
+}
+#first{
+  position: relative;
+  top: 40px;
+  left:100px;
+  height: 75px;
+  width: 550px;
+  font-family: verdana;
+  font-size: 18px;
+  font-weight: bold;
+}
+body{
+  background-color: rgba(0,0,0,0.1);
+  width: 100%;
+}
+#second{
+  position: relative;
+  top: -50px;
+  left:700px;
+  height: 60px;
+  width: 500px;
+  font-size: 18px;
+  font-family: verdana;
+}
+#form3{
+  border-radius: 5px;
+  width: 200px;
+  height: 20px;
+  font-size: 15px;
+  padding: 10px;
+  background: white;
+  margin:5px;
+}
+#date{
+  border-radius: 5px;
+  width: 100px;
+  height: 15px;
+  font-size: 15px;
+  padding: 10px;
+  background: white;
+
+
+}
+#next{
+  position: absolute;
+  top: 98px;
+  left:240px;
+  height: 60px;
+  width: 500px;
+}
+#words1{
+  position: absolute;
+  top: 320px;
+  left:130px;
+  height: 60px;
+  width: 500px;
+  font-size: 11px;
+  color: blue;
+
+}
+.words2{
+  font-size: 10px;
+
+}
+
+
+.world{
+  height: 250px;
+  width: 550px;
+}
+.button{
+  background-color: green;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  width:200px;
+  height: 40px;
+}
+.container{
+  height:50px;
+  width: 100%;
+clear: both;
+  background-color: white;
+  top: 450px;
+  position: relative;
+}
+</style>
+	
+</head>
+<body>
+	<header id="head">
+  <div>
+<img src="http://blog.logomyway.com/wp-content/uploads/2018/06/facebook-logo.jpg" alt="facebook logo"  class="logo">
+  </div>
+  <!-- <div class="form1">
+    Email or Phone <br>
+<input type="text" placeholder="Email"> <br>
+<input type="checkbox"> Keep me signed in.
+  </div> -->
+  <!-- <div class="form2">
+    Password<br>
+    <input type="password" placeholder="password"><br>
+    Forgotten your password?
+  </div> -->
+
+<!-- <input type="submit" value="Log In" class="submit"> -->
+</header>
+<div id="first"> Facebook helps you connect and share with the<br> people in your life.<br><br>
+  <img src="https://i.imgur.com/m7Z1tSU.jpg" alt="world picture" class="world">
+
+</div>
+<div id="second"> <h2>Create an account</h2><br> It's free and always will be.<br><br>
+
+<form th:action="@{/do_register}" method="post" th:object=${user}>
+
+  <input type="text" placeholder="First name" id="form3" name="userName" required>
+  
+  <!--<div id="next">  <input type="text" placeholder="Surname" id="form3"> </div>   -->
+  
+ 
+<br>
+ <input type="text" placeholder="Mobile number or email address" id="form3" name="userEmail" required><br>
+  <input type="password" placeholder="New password" id="form3" name="userPassword" required> <br><br>
+  
+  
+   <!-- <h6>Birthday </h6><br>
+    <input type="date" id="date"><div id="words1"> Why do I need to provide<br> my date of birth?</div><br><br>
+    <input type="radio" name="sex" value="female"> Female
+    <input type="radio" name="sex" value="male"> Male<br><br> --> 
+   
+   
+    <div class="words2">By clicking Sign Up, you agree to our <a href="#"> Terms</a>, <a href="#">Data Policy</a> <br>and <a href="#">Cookie Policy</a>. You may receive sms notification from <br>us and can opt out at anytime.</div><br>
+<input type="submit" class="button" value="Sign Up">
+<br />
+<br />
+<h5>Already Have An Account?</h5>
+<br />
+<h3><a href="/signin" >Sign in</a></h3>
+
+
+</form>
+</div>
+
+<!-- <footer class="container">
+
+  <p>© 2019 English(UK)  Hausa  French  Deutsch  Espanol  Portugues <hr>Arigbanla Yemi, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+</footer> -->
+</body>
+</html>

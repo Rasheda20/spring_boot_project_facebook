@@ -1,0 +1,119 @@
+<!-- <!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+
+<p>we have sent OTP to your email</p>
+ -->
+
+<!------------------comment it--------------------> 
+<!-- <div th:if="${session.message}">
+
+<div >
+<span th:text="${session.message}"></span>
+
+</div>
+
+<th:block th:text="${#session.removeAttribute('${session.message}')}"></th:block>
+
+</div> -->
+<!------------------comment it--------------------> 
+
+
+
+
+
+	<!-- <form th:action="@{/verify-otp}" method="post">
+		enter otp <input type="text" name="otp" placeholder="Enter OTP here"/>
+		<button type="submit">Verify</button>
+	
+	</form>
+</body>
+</html> -->
+
+
+<!-- -----------------end------------------------- -->
+
+<!-- <!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<div th:if=${session.message}>
+	<span th:text ="${session.message}"></span>
+
+</div>
+
+	<form th:action="@{/send-otp}" method="post">
+		<input type="email" placeholder="Enter your email here" name="email"  required/>
+		<button>Send OTP</button>
+	</form>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Facebook</title>
+	<link rel="stylesheet" th:href="@{/css/loginStyle.css}">
+   
+</head>
+<body>
+		<!-- login Page start -->
+		<div class="loginsignup">
+			<div class="container">
+				<div class="row justify-content-between">
+					
+					<div class="content-right">
+
+						<form th:action="@{/verify-otp}" method="post">
+
+
+
+                            <br>
+                            <br>
+                            <h3>We have sent OTP to your email</h3>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" name="otp" placeholder="Enter OTP here"/>
+								
+							</div>
+
+                            
+							<br />
+							<br />
+							<div class="create-btn">
+								<input type="submit" value="Verify" class="btn"/>
+							</div>
+
+
+						</form>
+						
+						
+						<!-- <form th:action="@{/verify-otp}" method="post">
+		enter otp <input type="text" name="otp" placeholder="Enter OTP here"/>
+		<button type="submit">Verify</button></form> -->
+						
+						
+						
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+</body>
+</html>
+
+
+

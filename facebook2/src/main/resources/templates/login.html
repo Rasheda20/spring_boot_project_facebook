@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Facebook Login</title>
+	<link rel="stylesheet" th:href="@{/css/loginStyle.css}">
+</head>
+<body>
+		<!-- login Page start -->
+		<div class="loginsignup">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="content-left">
+						<h1>facebook</h1>
+						<h2>Facebook helps you connect and share with the people in your life.</h2>
+					</div>
+					<div class="content-right">
+						<form th:action="@{/dologin}" method="post">
+						<div th:if="${param.error}">
+						Invalid username and password
+						</div>
+							<div class="form-group">
+								<input type="text" placeholder="Email address or phone number" name="username">
+							</div>
+							<div class="form-group">
+								<input type="password" placeholder="Password" name="password">
+							</div>
+							<div class="login">
+							<!-- <a href="" class="btn">log in</a> -->
+								
+								<input type="submit" value="log in" class="btn"/>
+							</div>
+							<div class="forgot">
+							<a th:href="@{/forgot}">Forgotten account?</a>
+							</div>
+							<div class="create-btn">
+								<a href="/signup" class="btn">create new account</a>
+							</div>
+						</form>
+						<p><a href="">Create a Page</a> for a celebrity, band or business.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- login Page end -->
+</body>
+</html>

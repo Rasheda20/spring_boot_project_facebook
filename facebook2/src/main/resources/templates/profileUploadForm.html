@@ -1,0 +1,78 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Facebook</title>
+	<!-- <link rel="stylesheet" th:href="@{/css/loginStyle.css}"> -->
+	<link  th:href="@{/css/nu.css}" rel="stylesheet">
+   
+</head>
+<body>
+		<!-- login Page start -->
+		<!-- <div class="loginsignup">
+			<div class="container">
+				<div class="row justify-content-between">
+					
+					<div class="content-right">
+
+						<form action="#" th:object=${user} enctype="multipart/form-data" method="POST"  th:action="@{/user/profile/upload/processupload}">
+                            <br><br>
+                            
+                            <div class="form-group">
+                            <input type="text" name= "about" placeholder= "About"/>
+							</div>
+							<br /><br />
+							
+							
+                            <input type="file" name="img" placeholder= "Upload your profile image"/>
+							
+							<br /><br />
+							
+							
+							<div class="create-btn">
+								<input type="submit" value="Upload" class="btn"/>
+							</div>
+							<br />
+							<div class="create-btn">
+								<a href="http://localhost:8080/user/show-post" class="btn">Back to profile page</a>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		
+		
+		
+	<form action="#" th:object=${user} enctype="multipart/form-data" method="POST"  th:action="@{/user/profile/upload/processupload}">
+    
+    <div class="login-form">
+        <div class="form-title">
+                <H1>Update your profile</H1>
+        </div>
+        <label for=""><input type="text" name= "about" placeholder= "About" autofocus></label>
+        <label for=""><input type="file"  name="img"></label>
+        
+        <button class="red" type="submit"><i class="fa fa-lock"></i>Update profile</button>
+        
+        <br />
+        
+        <a th:href="@{/user/show-post}"><h3>See Your profile</h3></a>
+        <!-- <button class="red" ><i class="fa fa-unlock-alt"></i></button> -->
+    </div>
+    
+    </form>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</body>
+</html>
